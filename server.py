@@ -248,10 +248,10 @@ def _run_http(host: str, port: int, mount_path: str):
     # Configure FastMCP HTTP host/port/mount dynamically
     mcp.settings.host = host
     mcp.settings.port = port
-    mcp.settings.mount_path = mount_path or "/"
+    # Toujours exposer MCP à la racine "/"
+    mcp.settings.mount_path = "/"
     # Run Streamable HTTP (compatible avec ChatGPT Agent Mode)
     anyio.run(mcp.run_streamable_http_async)
-
 
 def _run_ws(host: str, port: int, mount_path: str):
     # Minimal ASGI app that serves MCP over WebSocket at the root path
