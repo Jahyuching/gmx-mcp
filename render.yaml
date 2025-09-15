@@ -3,7 +3,7 @@ services:
     name: gmx-mcp
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: python server.py --mode ws --host 0.0.0.0 --port $PORT --path /
+    startCommand: python server.py --mode http --host 0.0.0.0 --port $PORT --path /
     plan: free
     autoDeploy: true
     envVars:
