@@ -14,19 +14,13 @@ from urllib.parse import parse_qs
 import argparse
 import anyio
 from fastapi import FastAPI
-from mcp.server.fastmcp import FastMCP
+import uvicorn
 
 app = FastAPI()
-mcp = FastMCP("gmx-mcp")
 
-# 👇 ajoute ça pour répondre à ChatGPT
 @app.get("/")
 async def root():
     return {"mcp": "ok", "protocol": "MCP"}
-
-# puis monte les outils MCP sur /
-mcp.mount_to_fastapi(app, path="/")
-
 
 
 IMAP_HOST = os.environ.get("GMX_IMAP_HOST", "imap.gmx.com")
